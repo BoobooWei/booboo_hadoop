@@ -100,7 +100,7 @@ Google如何快速搜索网页的呢？主要是用了一种**倒排索引**的�
 
 单词`我`出现在标识号为1的网站的1的位置，还出现在标识为2的网站的1的位置。
 
-![1536300960347](C:\Users\rgwei\Desktop\GitHub\booboo_hadoop\01_theory\pic\04.png)
+![1536300960347](pic/04.png)
 
 因此倒排列表可以快速进行查询。
 
@@ -182,7 +182,7 @@ Google的算法
 
 
 
-![1536302292759](C:\Users\rgwei\Desktop\GitHub\booboo_hadoop\01_theory\pic\08.png)
+![1536302292759](pic/08.png)
 
 网页分布在不同的服务器节点上
 
