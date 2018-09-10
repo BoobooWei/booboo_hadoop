@@ -2,7 +2,7 @@
 
 > 2018-09-05 BoobooWei
 
-> 这个讲义比较老，但是原理讲得非常细致，建议作为学习的第一部分。
+*这个讲义比较老，但是原理讲得非常细致，建议作为学习的第一部分。*
 
 [TOC]
 
@@ -167,11 +167,8 @@ Google的算法
 
 ![1536302064742](pic/07.png)
 
-阿尔法的值是google工程是的经验。
-
 ```shell
-# 矩阵的乘法复习
-# 特征向量
+算法:求出第一个特征向量的递推方法
 ```
 
 
@@ -196,8 +193,305 @@ Google的算法
 
 将一个巨大的计算任务，通过map映射到各个的节点来进行分布式计算，每个节点只要抗下一小块负荷，通过两万个屌丝就变成了高富帅，然后汇总到一个节点，汇总的过程叫做reduce，将汇总的结果再分发到各个节点，再汇总，反复多次后，pagerank就被算出来了。
 
-## 课后练习
+谷歌背后的数学 https://www.changhai.org/articles/technology/misc/google_math.php
 
-1. 通过PageRank算法计算4个网页的PR值。
+## 课后练习_通过PageRank算法计算网页PR值
 
+网页之间的链家指向关系如下图所示。
+
+```mermaid
+graph LR
+A[A网站]-->B[B网站]
+A[A网站]-->C[C网站]
+A[A网站]-->D[D网站]
+B[B网站]-->C[C网站]
+B[B网站]-->D[D网站]
+C[C网站]-->D[D网站]
+D[D网站]-->B[B网站]
+```
+
+使用markdown画出来稍微丑了点，但是网站间的指向是没有问题的。也可以参照下图：
+
+![1536301113846](pic/05.png)
+
+**第一步：计算每一个网站的“概率转移矩阵”，我们用$S_a S_b S_c S_d $表示。**
+$$
+S_a = \begin{bmatrix}
+0\\
+\frac{1}{3}\\
+\frac{1}{3}\\
+\frac{1}{3}\\
+\end{bmatrix}
+S_b = \begin{bmatrix}
+0\\
+0\\
+\frac{1}{2}\\
+\frac{1}{2}\\
+\end{bmatrix}
+S_c = \begin{bmatrix}
+0\\
+0\\
+0\\
+1\\
+\end{bmatrix}
+S_d = \begin{bmatrix}
+0\\
+1\\
+0\\
+0\\
+\end{bmatrix}
+$$
+
+```shell
+# 如何来计算概率转移矩阵呢？通俗易懂的方法 指向某个网站的个数/源端总的指向数
+1. 如果我是一个网站，那么我链接了多少个网站（除自己以外的）表示为 N ？比如A网站，链接了B、C、D，则一共链接了3个网站，则N=3。
+2. 链接概率为链接数/N；有一个B的链接，那么概率为1/3；有一个C的链接，那么概率为1/3；有一个D的链接，那么概率为1/3。
+3. 按照以下顺序组成矩阵 A:0/3,B:1/3,C:1/3,D:1/3
+# 如果指向同一个网站的链接数为多个，也只算1
+```
+
+**第二步：根据 $G = \alpha S + ( 1 - \alpha ) \frac{1}{N} U$ 计算 $G_a G_b G_c G_d$**
+
+* $\alpha$ 为0~1之间的值，是google工程师的一个经验值，例如0.85
+
+* $S$ 是第一步中计算的网站概率转移矩阵
+
+* $\frac{1}{N} U$ 其中N为网页的总数，$U$ 为元素全为 $1$ 的 $N$ 阶向量；例如题目中N=4，那么
+  $$
+  \frac{1}{N} U  = 
+  \frac{1}{4} *
+  \begin{bmatrix}
+  1\\
+  1\\
+  1\\
+  1\\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  \frac{1}{4}\\
+  \frac{1}{4}\\
+  \frac{1}{4}\\
+  \frac{1}{4}\\
+  \end{bmatrix}
+  $$
+
+
+
+
+
+
+
+
+
+当$\alpha = 0.85$ 时，计算$G_a G_b G_c G_d$ 如下：
+
+
+$$
+G_a = 0.85 *  \begin{bmatrix}
+0\\
+\frac{1}{3}\\
+\frac{1}{3}\\
+\frac{1}{3}\\
+\end{bmatrix}
++ (1-0.85)*\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{77}{240}\\
+\frac{77}{240}\\
+\frac{77}{240}\\
+\end{bmatrix}
+$$
+
+$$
+G_b = 0.85 *  \begin{bmatrix}
+0\\
+0\\
+\frac{1}{2}\\
+\frac{1}{2}\\
+\end{bmatrix}
++ (1-0.85)*
+\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{3}{80}\\
+\frac{37}{80}\\
+\frac{37}{80}\\
+\end{bmatrix}
+$$
+
+$$
+G_c = 0.85 *  \begin{bmatrix}
+0\\
+0\\
+0\\
+1\\
+\end{bmatrix}
++ (1-0.85)*\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{3}{80}\\
+\frac{3}{80}\\
+\frac{71}{80}\\
+\end{bmatrix}
+$$
+
+$$
+G_d = 0.85 *  \begin{bmatrix}
+0\\
+1\\
+0\\
+0\\
+\end{bmatrix}
++ (1-0.85)*\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{71}{80}\\
+\frac{3}{80}\\
+\frac{3}{80}\\
+\end{bmatrix}
+$$
+
+**第三步：根据公式 $ q^{next}=Gq^{cur} $** 求出 $q$ 的收敛值。
+
+* 1>向量$q$的初始值是元素全为1的 $N$阶向量
+
+
+
+$$
+q = \begin{bmatrix}
+1\\
+1\\
+1\\
+1\\
+\end{bmatrix}
+$$
+
+* 2> 计算$q^{next}$
+
+
+$$
+  q = \begin{bmatrix}
+  1\\
+  1\\
+  1\\
+  1\\
+  \end{bmatrix}
+  *
+  ( G_a
+  + G_b
+  + G_c
+  + G_d)
+$$
+
+* 判断$q^{next}是否等于q^{cur} $，如果不相等，则继续以上两步骤，直到$q^{next}=q^{cur} $
+
+
+
+按照上面的步骤我们计算一下：
+
+第一轮
+
+当
+
+
+$$
+q^{cur} = 
+\begin{bmatrix}
+1\\
+1\\
+1\\
+1\\
+\end{bmatrix}
+$$
+时，
+
+
+$$
+q^{next} =  
+\begin{bmatrix}
+1\\
+1\\
+1\\
+1\\
+\end{bmatrix}
+* (
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{77}{240}\\
+\frac{77}{240}\\
+\frac{77}{240}\\
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{3}{80}\\
+\frac{37}{80}\\
+\frac{37}{80}\\
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{3}{80}\\
+\frac{3}{80}\\
+\frac{71}{80}\\
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{3}{80}\\
+\frac{71}{80}\\
+\frac{3}{80}\\
+\frac{3}{80}\\
+\end{bmatrix}
+)
+=
+\begin{bmatrix}
+\frac{3}{20}\\
+\frac{77}{60}\\
+\frac{103}{120}\\
+\frac{41}{24}\\
+\end{bmatrix}
+$$
+
+
+
+此时$q^{next}!=q^{cur} $,则
+
+
+$$
+q^{cur}
+=
+\begin{bmatrix}
+\frac{3}{20}\\
+\frac{77}{60}\\
+\frac{103}{120}\\
+\frac{41}{24}\\
+\end{bmatrix}
+$$
+
+继续求 $q^{next}$
+
+后续循环不再列出，最终得到收敛的$q$值。
 
