@@ -215,32 +215,8 @@ D[D网站]-->B[B网站]
 ![1536301113846](pic/05.png)
 
 **第一步：计算每一个网站的“概率转移矩阵”，我们用$S_a S_b S_c S_d $表示。**
-$$
-S_a = \begin{bmatrix}
-0\\
-\frac{1}{3}\\
-\frac{1}{3}\\
-\frac{1}{3}\\
-\end{bmatrix}
-S_b = \begin{bmatrix}
-0\\
-0\\
-\frac{1}{2}\\
-\frac{1}{2}\\
-\end{bmatrix}
-S_c = \begin{bmatrix}
-0\\
-0\\
-0\\
-1\\
-\end{bmatrix}
-S_d = \begin{bmatrix}
-0\\
-1\\
-0\\
-0\\
-\end{bmatrix}
-$$
+
+![](pic/18.png)
 
 ```shell
 # 如何来计算概率转移矩阵呢？通俗易懂的方法 指向某个网站的个数/源端总的指向数
@@ -257,147 +233,24 @@ $$
 * $S$ 是第一步中计算的网站概率转移矩阵
 
 * $\frac{1}{N} U$ 其中N为网页的总数，$U$ 为元素全为 $1$ 的 $N$ 阶向量；例如题目中N=4，那么
-  $$
-  \frac{1}{N} U  = 
-  \frac{1}{4} *
-  \begin{bmatrix}
-  1\\
-  1\\
-  1\\
-  1\\
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-  \frac{1}{4}\\
-  \frac{1}{4}\\
-  \frac{1}{4}\\
-  \frac{1}{4}\\
-  \end{bmatrix}
-  $$
 
+  ![](pic/18.png)
 
 当$\alpha = 0.85$ 时，计算$G_a G_b G_c G_d$ 如下：
 
-
-$$
-G_a = 0.85 *  \begin{bmatrix}
-0\\
-\frac{1}{3}\\
-\frac{1}{3}\\
-\frac{1}{3}\\
-\end{bmatrix}
-+ (1-0.85)*\begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\end{bmatrix} =
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\end{bmatrix}
-$$
-
-$$
-G_b = 0.85 *  \begin{bmatrix}
-0\\
-0\\
-\frac{1}{2}\\
-\frac{1}{2}\\
-\end{bmatrix}
-+ (1-0.85)*
-\begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\end{bmatrix}
-=
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{37}{80}\\
-\frac{37}{80}\\
-\end{bmatrix}
-$$
-
-$$
-G_c = 0.85 *  \begin{bmatrix}
-0\\
-0\\
-0\\
-1\\
-\end{bmatrix}
-+ (1-0.85)*\begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\end{bmatrix}
-=
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{71}{80}\\
-\end{bmatrix}
-$$
-
-$$
-G_d = 0.85 *  \begin{bmatrix}
-0\\
-1\\
-0\\
-0\\
-\end{bmatrix}
-+ (1-0.85)*\begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\end{bmatrix}
-=
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{71}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\end{bmatrix}
-$$
+![](pic/12.png)
 
 **第三步：根据公式 $ q^{next}=Gq^{cur} $** 求出 $q$ 的收敛值。
 
 * 1>向量$q$的初始值是元素全为1的 $N$阶向量
 
+  ![](pic/13.png)
 
 
-$$
-q = \begin{bmatrix}
-1\\
-1\\
-1\\
-1\\
-\end{bmatrix}
-$$
 
 * 2> 计算$q^{next}$
 
-
-$$
-  q = \begin{bmatrix}
-  1\\
-  1\\
-  1\\
-  1\\
-  \end{bmatrix}
-  *
-  ( G_a
-  + G_b
-  + G_c
-  + G_d)
-$$
+  ![](pic/14.png)
 
 * 判断$q^{next}是否等于q^{cur} $，如果不相等，则继续以上两步骤，直到$q^{next}=q^{cur} $
 
@@ -409,80 +262,15 @@ $$
 
 当
 
+![](pic/15.png)
 
-$$
-q^{cur} = 
-\begin{bmatrix}
-1\\
-1\\
-1\\
-1\\
-\end{bmatrix}
-$$
 时，
 
-
-$$
-q^{next} =  
-\begin{bmatrix}
-1\\
-1\\
-1\\
-1\\
-\end{bmatrix}
-* (
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{37}{80}\\
-\frac{37}{80}\\
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{71}{80}\\
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{71}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-\frac{3}{20}\\
-\frac{77}{60}\\
-\frac{103}{120}\\
-\frac{41}{24}\\
-\end{bmatrix}
-$$
-
-
+![](pic/16.png)
 
 此时$q^{next}!=q^{cur} $,则
 
-
-$$
-q^{cur}
-=
-\begin{bmatrix}
-\frac{3}{20}\\
-\frac{77}{60}\\
-\frac{103}{120}\\
-\frac{41}{24}\\
-\end{bmatrix}
-$$
+![](pic/17.png)
 
 继续求 $q^{next}$
 
