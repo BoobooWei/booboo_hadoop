@@ -276,6 +276,7 @@ $$
   $$
 
 
+
 当$\alpha = 0.85$ 时，计算$G_a G_b G_c G_d$ 如下：
 
 
@@ -386,17 +387,14 @@ $$
 
 
 $$
-  q = \begin{bmatrix}
+q = \begin{bmatrix}
   1\\
   1\\
   1\\
   1\\
   \end{bmatrix}
   *
-  ( G_a
-  + G_b
-  + G_c
-  + G_d)
+  G
 $$
 
 * 判断$q^{next}是否等于q^{cur} $，如果不相等，则继续以上两步骤，直到$q^{next}=q^{cur} $
@@ -425,46 +423,17 @@ $$
 $$
 q^{next} =  
 \begin{bmatrix}
+\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\
+\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\
+\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\
+\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\
+\end{bmatrix}
+*
+\begin{bmatrix}
 1\\
 1\\
 1\\
 1\\
-\end{bmatrix}
-* (
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{37}{80}\\
-\frac{37}{80}\\
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{71}{80}\\
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{3}{80}\\
-\frac{71}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-\frac{3}{20}\\
-\frac{77}{60}\\
-\frac{103}{120}\\
-\frac{41}{24}\\
 \end{bmatrix}
 $$
 
