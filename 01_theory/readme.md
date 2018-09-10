@@ -6,6 +6,6 @@
 
 例如：
 
-[01_Introduction to the origin and system of hadoop.md](01_theory/01_Introduction to the origin and system of hadoop.md) 公式为markdown源码
+[01_Introduction to the origin and system of hadoop.md](https://github.com/BoobooWei/booboo_hadoop/blob/master/01_theory/01_Introduction%20to%20the%20origin%20and%20system%20of%20hadoop.md) 公式为markdown源码
 
 [01_Introduction to the origin and system of hadoop_tmp.md](01_theory/01_Introduction to the origin and system of hadoop_tmp.md) 公式显示为图片模式
