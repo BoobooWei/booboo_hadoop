@@ -482,7 +482,7 @@ $$
 
 后续循环不再列出，最终得到收敛的$q$值。
 
-计算脚本链接地址
+[计算脚本链接地址](https://github.com/BoobooWei/booboo_hadoop/blob/master/python_scripts/booboo_pagerank.py)
 
 ```shell
 # 通过python脚本协助计算结果如下
