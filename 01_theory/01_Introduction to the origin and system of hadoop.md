@@ -249,7 +249,19 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
 ![1536828513925](pic/23.png)
 
+
+
+首先给大家讲一下Hadoop的架构，让大家有一些基本的认识。
+
+上图是按照机房的机柜来画的，每一个长方形是一个物理节点，通过网线连接到交换机。大家可以看到有些标识：datanode、namenode、jobtracker、tasktracker等，这些都是后台进程。
+
+这里面最重要的就是namenode。
+
 #### Namenode 
+
+> Namenode可以翻译成“名称节点”，是HDFS的守护程序，他起到分布式文件系统的总控的作用。首先会记录所有的元数据，比如，会记录每一个文件是怎么记录的，会记录在哪个节点，也会对内存和IO进行管理。
+>
+> 访问Hadoop集群时，一般情况下会先访问Namenode，了解数据分布的情况后，才能去具体的数据节点访问数据。NameNode还是单点（2012年），发生故障会导致集群故障
 
 * HDFS的守护程序
 
@@ -261,7 +273,11 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
   ![1536828588787](pic/24.png)
 
+
+
 #### Secondary Namenode
+
+> Secondary Namenode可以翻译为“辅助节点”，实时同步Namenode的元数据，一旦Namenode故障，则可以手动切换到辅助节点。目前不能自动故障转移（2012年）。
 
 * 监控HDFS状态的辅助后台程序
 * 每个集群都有一个
@@ -270,7 +286,11 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
 ![1536828639596](pic/25.png)
 
+
+
 #### DataNode
+
+> DataNode是运行在数据节点的后台进程，数据节点运行在子节点，我们称存放数据的节点为slave。而Namenode、secondary namenode我们称为master。
 
 * 每台从服务器都运行一个
 
@@ -278,15 +298,31 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
 ![1536828697244](pic/26.png)
 
+
+
 #### JobTracker
+
+> 作业跟踪器，运行在master上的很重要的进程，对MapReduce体系的总控作用。
 
 * 用于处理作业（用户提交代码）的后台程序
 * 决定有哪些文件参与处理，然后切割task并分配节点
 * 监控task，重启失败的task（于不同的节点）
 * 每个集群只有唯一一个JobTracker，位于Master节点
 
+#### TaskTracker
+
+> 在Slave中既有管理HDFS的DataNode，又有管理MapReduce的TaskTracker
+
+* 位于slave节点上，与datanode结合（代码与数据一起的原则）
+* 管理各自节点上的task（由jobtracker分配）
+* 每个节点只有一个tasktracker，但一个tasktracker可以启动多个jvm，用于并行执行map或者reduce任务
+* 与jobtracker交互
+
+
 
 #### Master与Slave
+
+> 测试环境可以选择3台服务器，一台作为Master，两台作为Slave
 
 * Master：Namenode、Secondary Namenode、Jobtracker。浏览器（用于观看 管理界面），其它Hadoop工具
 * Slave：Tasktracker、Datanode
@@ -294,7 +330,7 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
 ### Why hadoop？
 
-![1536828809846](C:\Users\rgwei\Desktop\GitHub\booboo_hadoop\01_theory\pic\27.png)
+![1536828809846](pic/27.png)
 
 #### 场景：电信运营商信令分析与监测
 
@@ -318,7 +354,9 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
 #### Hadoop的思想
 
-![1536828941511](C:\Users\rgwei\Desktop\GitHub\booboo_hadoop\01_theory\pic\28.png)
+> 100个屌丝可以替代一个高富帅
+
+![1536828941511](pic/28.png)
 
 ### Why not Hadoop？
 
@@ -419,6 +457,7 @@ $$
   \frac{1}{4}\\
   \end{bmatrix}
   $$
+
 
 
 

@@ -195,6 +195,185 @@ Google的算法
 
 谷歌背后的数学 https://www.changhai.org/articles/technology/misc/google_math.php
 
+### Google带给我们的关键技术和思想
+
+* GFS
+* Map-Reduce
+* Bigtable（后面讲）
+
+
+
+## Hadoop的源起——Lucene
+
+* Doug Cutting开创的开源软件，用java书写代码，实现与Google类似的全文搜索功能，它提供了全文检索引擎的架构，包括完整的查询引擎和索引引擎
+* 早期发布在个人网站和SourceForge，2001年年底成为apache软件基金会jakarta的一个子项目
+* Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎
+* 对于大数量的场景，Lucene面对与Google同样的困难。迫使Doug Cutting学习和模仿Google解决这些问题的办法
+* 一个微缩版：Nutch
+
+![1536828301128](pic/20.png)
+
+### 从lucene到nutch，从nutch到hadoop
+
+* 2003-2004年，Google公开了部分GFS和Mapreduce思想的细节，以此为基础Doug Cutting等人用了2年业余时间实现了DFS和Mapreduce机制，使Nutch性能飙升
+
+* Yahoo招安Doug Cutting及其项目
+* Hadoop 于 2005 年秋天作为 Lucene的子项目 Nutch的 一部分正式引入Apache基金会。2006 年 3 月份，Map-Reduce 和 Nutch Distributed File System (NDFS) 分别被纳入称为 Hadoop 的项目中
+* 名字来源于Doug Cutting儿子的玩具大象
+
+![1536828405812](pic/21.png)
+
+#### 目前Hadoop达到的高度
+
+* 实现云计算的事实标准开源软件
+* 包含数十个具有强大生命力的子项目
+* 已经能在数千节点上运行，处理数据量和排序时间不断打破世界纪录
+
+### Hadoop子项目家族
+
+![1536828478454](pic/22.png)
+
+MapReduce和HDFS是Hadoop的两大支柱。
+
+Hbase：列式存储
+
+Pig：在Hadoop上进行开发的语言主要我们都知道Hadoop是Java写的，但是我们也需要一些其他语言来支持，Pig就类似于shell命令，自动将shell命令转化为MapReduce的语言，就像是一个转换器。
+
+Hive：是一个非常有用的子项目，用于SQL开发
+
+
+
+
+
+### Hadoop的架构
+
+![1536828513925](pic/23.png)
+
+
+
+首先给大家讲一下Hadoop的架构，让大家有一些基本的认识。
+
+上图是按照机房的机柜来画的，每一个长方形是一个物理节点，通过网线连接到交换机。大家可以看到有些标识：datanode、namenode、jobtracker、tasktracker等，这些都是后台进程。
+
+这里面最重要的就是namenode。
+
+#### Namenode 
+
+> Namenode可以翻译成“名称节点”，是HDFS的守护程序，他起到分布式文件系统的总控的作用。首先会记录所有的元数据，比如，会记录每一个文件是怎么记录的，会记录在哪个节点，也会对内存和IO进行管理。
+>
+> 访问Hadoop集群时，一般情况下会先访问Namenode，了解数据分布的情况后，才能去具体的数据节点访问数据。NameNode还是单点（2012年），发生故障会导致集群故障
+
+* HDFS的守护程序
+
+* 纪录文件是如何分割成数据块的，以及这些数据块被存储到哪些节点上
+
+* 对内存和I/O进行集中管理
+
+* 是个单点，发生故障将使集群崩溃
+
+  ![1536828588787](pic/24.png)
+
+
+
+#### Secondary Namenode
+
+> Secondary Namenode可以翻译为“辅助节点”，实时同步Namenode的元数据，一旦Namenode故障，则可以手动切换到辅助节点。目前不能自动故障转移（2012年）。
+
+* 监控HDFS状态的辅助后台程序
+* 每个集群都有一个
+* 与NameNode进行通讯，定期保存HDFS元数据快照
+* 当NameNode故障可以作为备用NameNode使用
+
+![1536828639596](pic/25.png)
+
+
+
+#### DataNode
+
+> DataNode是运行在数据节点的后台进程，数据节点运行在子节点，我们称存放数据的节点为slave。而Namenode、secondary namenode我们称为master。
+
+* 每台从服务器都运行一个
+
+* 负责把HDFS数据块读写到本地文件系统
+
+![1536828697244](pic/26.png)
+
+
+
+#### JobTracker
+
+> 作业跟踪器，运行在master上的很重要的进程，对MapReduce体系的总控作用。
+
+* 用于处理作业（用户提交代码）的后台程序
+* 决定有哪些文件参与处理，然后切割task并分配节点
+* 监控task，重启失败的task（于不同的节点）
+* 每个集群只有唯一一个JobTracker，位于Master节点
+
+#### TaskTracker
+
+> 在Slave中既有管理HDFS的DataNode，又有管理MapReduce的TaskTracker
+
+* 位于slave节点上，与datanode结合（代码与数据一起的原则）
+* 管理各自节点上的task（由jobtracker分配）
+* 每个节点只有一个tasktracker，但一个tasktracker可以启动多个jvm，用于并行执行map或者reduce任务
+* 与jobtracker交互
+
+
+
+#### Master与Slave
+
+> 测试环境可以选择3台服务器，一台作为Master，两台作为Slave
+
+* Master：Namenode、Secondary Namenode、Jobtracker。浏览器（用于观看 管理界面），其它Hadoop工具
+* Slave：Tasktracker、Datanode
+* Master不是唯一的
+
+### Why hadoop？
+
+![1536828809846](pic/27.png)
+
+#### 场景：电信运营商信令分析与监测
+
+* 原数据库服务器配置：HP小型机，128G内存，48颗CPU，2节点RAC，其中一个节点用于入库，另外一个节点用于查询
+
+* 存储：HP虚拟化存储，>1000个盘
+* 数据库架构采用Oracle双节点RAC
+* 问题：1 入库瓶颈 2 查询瓶颈
+
+##### 数据分析者面临的问题
+
+* 数据日趋庞大，无论是入库和查询，都出现性能瓶颈
+* 用户的应用和分析结果呈整合趋势，对实时性和响应时间要求越来越高
+* 使用的模型越来越复杂，计算量指数级上升
+
+##### 数据分析者期待的解决方案
+
+* 完美解决性能瓶颈，在可见未来不容易出现新瓶颈
+* 过去所拥有的技能可以平稳过渡。比如SQL、R
+* 转移平台的成本有多高？平台软硬件成本，再开发成本，技能再培养成本，维护成本
+
+#### Hadoop的思想
+
+> 100个屌丝可以替代一个高富帅
+
+![1536828941511](pic/28.png)
+
+### Why not Hadoop？
+
+* Java？
+* 难以驾驭？
+* 数据集成困难？
+* Hadoop vs Oracle
+
+### Hadoop体系下的分析手段
+
+* 主流：Java程序
+* 轻量级的脚本语言：Pig
+* SQL技巧平稳过渡：Hive
+* NoSQL：HBase
+
+
+---
 ## 课后练习_通过PageRank算法计算网页PR值
 
 网页之间的链家指向关系如下图所示。
