@@ -1,3 +1,40 @@
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Hadoop的起源与体系介绍](#hadoop的起源与体系介绍)
+	- [Hadoop的思想之源：Google](#hadoop的思想之源google)
+		- [Google的低成本之道](#google的低成本之道)
+		- [集装箱数据中心](#集装箱数据中心)
+	- [Google面对的数据和计算难题](#google面对的数据和计算难题)
+		- [大量的网页如何存储？](#大量的网页如何存储)
+		- [搜索算法-倒排索引](#搜索算法-倒排索引)
+		- [Page-Rank计算问题](#page-rank计算问题)
+			- [算法体验-Google矩阵](#算法体验-google矩阵)
+			- [PageRank简介](#pagerank简介)
+			- [PageRank算法](#pagerank算法)
+			- [计算PR值](#计算pr值)
+		- [Google带给我们的关键技术和思想](#google带给我们的关键技术和思想)
+	- [Hadoop的源起——Lucene](#hadoop的源起lucene)
+		- [从lucene到nutch，从nutch到hadoop](#从lucene到nutch从nutch到hadoop)
+			- [目前Hadoop达到的高度](#目前hadoop达到的高度)
+		- [Hadoop子项目家族](#hadoop子项目家族)
+		- [Hadoop的架构](#hadoop的架构)
+			- [Namenode](#namenode)
+			- [Secondary Namenode](#secondary-namenode)
+			- [DataNode](#datanode)
+			- [JobTracker](#jobtracker)
+			- [TaskTracker](#tasktracker)
+			- [Master与Slave](#master与slave)
+		- [Why hadoop？](#why-hadoop)
+			- [场景：电信运营商信令分析与监测](#场景电信运营商信令分析与监测)
+				- [数据分析者面临的问题](#数据分析者面临的问题)
+				- [数据分析者期待的解决方案](#数据分析者期待的解决方案)
+			- [Hadoop的思想](#hadoop的思想)
+		- [Why not Hadoop？](#why-not-hadoop)
+		- [Hadoop体系下的分析手段](#hadoop体系下的分析手段)
+	- [课后练习_通过PageRank算法计算网页PR值](#课后练习通过pagerank算法计算网页pr值)
+- [通过python脚本协助计算结果如下](#通过python脚本协助计算结果如下)
+
+<!-- /TOC -->
 # Hadoop的起源与体系介绍
 
 > 2018-09-05 BoobooWei
