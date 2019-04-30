@@ -5,4 +5,4 @@
 如果文档中包含大量数学运算，请先安装
 
 * [插件mathjax-plugin-for-github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)
-* [插件markdown-preview-plus](https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl)。
+* [插件markdown-preview-plus](https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl)
