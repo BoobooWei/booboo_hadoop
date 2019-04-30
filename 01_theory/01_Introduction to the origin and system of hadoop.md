@@ -1,4 +1,5 @@
 # Hadoop的起源与体系介绍
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 > 2018-09-05 BoobooWei
 
@@ -257,7 +258,7 @@ Hive：是一个非常有用的子项目，用于SQL开发
 
 这里面最重要的就是namenode。
 
-#### Namenode 
+#### Namenode
 
 > Namenode可以翻译成“名称节点”，是HDFS的守护程序，他起到分布式文件系统的总控的作用。首先会记录所有的元数据，比如，会记录每一个文件是怎么记录的，会记录在哪个节点，也会对内存和IO进行管理。
 >
@@ -398,6 +399,7 @@ D[D网站]-->B[B网站]
 ![1536301113846](pic/05.png)
 
 **第一步：计算每一个网站的“概率转移矩阵”，我们用$S_a S_b S_c S_d $表示。**
+
 $$
 S_a = \begin{bmatrix}
 0\\
@@ -441,7 +443,7 @@ $$
 
 * $\frac{1}{N} U$ 其中N为网页的总数，$U$ 为元素全为 $1$ 的 $N$ 阶向量；例如题目中N=4，那么
   $$
-  \frac{1}{N} U  = 
+  \frac{1}{N} U  =
   \frac{1}{4} *
   \begin{bmatrix}
   1\\
@@ -596,7 +598,7 @@ $$
 
 
 $$
-q^{cur} = 
+q^{cur} =
 \begin{bmatrix}
 1\\
 1\\
@@ -678,4 +680,3 @@ $$
 ('C', 0.8270209157716194)
 ('A', 0.14999999999999947)
 ```
-
