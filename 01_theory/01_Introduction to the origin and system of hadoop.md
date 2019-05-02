@@ -41,6 +41,23 @@
 
 *这个讲义比较老，但是原理讲得非常细致，建议作为学习的第一部分。*
 
+![](pic/29.png)
+
+
+- [1998@The Anatomy of a Large-Scale Hypertextual Web Search Engine](http://infolab.stanford.edu/pub/papers/google.pdf)
+- [1998@The PageRank Citation Ranking: Bringing Order to the Web](hadoop_pdf/Google/pageranksub.pdf)  
+- [2003@ai.google@The Google File System](https://ai.google/research/pubs/pub51)
+- [2004@www.usenix.org@MapReduce: Simplified Data Processing on Large Clusters](https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf)--
+- [2004@ai.google@MapReduce: Simplified Data Processing on Large Clusters](https://ai.google/research/pubs/pub62)
+- [2006@www.usenix.org@Bigtable: A Distributed Storage System for Structured Data](https://www.usenix.org/legacy/event/osdi06/tech/chang/chang_html/index.html)
+- [2010@ai.google@MapReduce/Bigtable for Distributed Optimization](https://ai.google/research/pubs/pub36948)
+
+国内中文翻译参考：
+
+* [Google-GFS 中文](hadoop_pdf/Google/Google-File-System中文版_1.0.pdf)
+* [Google-MapReduce 中文](hadoop_pdf/Google/Google-MapReduce中文版_1.0.pdf)
+* [Google-Bigtable 中文](hadoop_pdf/Google/Google-Bigtable中文版_1.0.pdf)
+
 ## Hadoop的思想之源：Google
 
 Google搜索引擎，Gmail，安卓，AppspotGoogle Maps，Google earth，Google学术，Google翻译，Google+，下一步Google what？？
