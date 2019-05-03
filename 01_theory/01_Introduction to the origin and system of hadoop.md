@@ -54,9 +54,9 @@
 
 国内中文翻译参考：
 
-* [Google-GFS 中文](hadoop_pdf/Google/Google-File-System中文版_1.0.pdf)
-* [Google-MapReduce 中文](hadoop_pdf/Google/Google-MapReduce中文版_1.0.pdf)
-* [Google-Bigtable 中文](hadoop_pdf/Google/Google-Bigtable中文版_1.0.pdf)
+* [Google-GFS 中文](https://github.com/BoobooWei/booboo_hadoop/blob/master/hadoop_pdf/Google/Google-File-System%E4%B8%AD%E6%96%87%E7%89%88_1.0.pdf)
+* [Google-MapReduce 中文](https://github.com/BoobooWei/booboo_hadoop/blob/master/hadoop_pdf/Google/Google-MapReduce%E4%B8%AD%E6%96%87%E7%89%88_1.0.pdf)
+* [Google-Bigtable 中文](https://github.com/BoobooWei/booboo_hadoop/blob/master/hadoop_pdf/Google/Google-Bigtable%E4%B8%AD%E6%96%87%E7%89%88_1.0.pdf)
 
 ## Hadoop的思想之源：Google
 
