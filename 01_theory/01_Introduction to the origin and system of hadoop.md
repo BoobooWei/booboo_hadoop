@@ -421,27 +421,27 @@ D[D网站]-->B[B网站]
 $$
 S_a = \begin{bmatrix}
 0\\
-\frac{1}{3}\\
-\frac{1}{3}\\
-\frac{1}{3}\\
+\frac{1}{3}\\\\
+\frac{1}{3}\\\\
+\frac{1}{3}\\\\
 \end{bmatrix}
 S_b = \begin{bmatrix}
-0\\
-0\\
-\frac{1}{2}\\
-\frac{1}{2}\\
+0\\\\
+0\\\\
+\frac{1}{2}\\\\
+\frac{1}{2}\\\\
 \end{bmatrix}
 S_c = \begin{bmatrix}
-0\\
-0\\
-0\\
-1\\
+0\\\\
+0\\\\
+0\\\\
+1\\\\
 \end{bmatrix}
 S_d = \begin{bmatrix}
-0\\
-1\\
-0\\
-0\\
+0\\\\
+1\\\\
+0\\\\
+0\\\\
 \end{bmatrix}
 $$
 
@@ -466,20 +466,20 @@ $$
   \frac{1}{N} U  =
   \frac{1}{4} *
   \begin{bmatrix}
-  1\\
-  1\\
-  1\\
-  1\\
+  1\\\\
+  1\\\\
+  1\\\\
+  1\\\\
   \end{bmatrix}
   $$
 
   $$
   \frac{1}{N} U  =
   \begin{bmatrix}
-  \frac{1}{4}\\
-  \frac{1}{4}\\
-  \frac{1}{4}\\
-  \frac{1}{4}\\
+  \frac{1}{4}\\\\
+  \frac{1}{4}\\\\
+  \frac{1}{4}\\\\
+  \frac{1}{4}\\\\
   \end{bmatrix}
   $$
 
@@ -491,24 +491,24 @@ $$
 $$
 G_a = 0.85 *  \begin{bmatrix}
 0\\
-\frac{1}{3}\\
-\frac{1}{3}\\
-\frac{1}{3}\\
+\frac{1}{3}\\\\
+\frac{1}{3}\\\\
+\frac{1}{3}\\\\
 \end{bmatrix} + (1-0.85) * \begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
 \end{bmatrix}
 $$
 
 $$
 G_a =
 \begin{bmatrix}
-\frac{3}{80}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
-\frac{77}{240}\\
+\frac{3}{80}\\\\
+\frac{77}{240}\\\\
+\frac{77}{240}\\\\
+\frac{77}{240}\\\\
 \end{bmatrix}
 $$
 
@@ -518,23 +518,23 @@ $$
 G_b = 0.85 * \begin{bmatrix}
 0\\
 0\\
-\frac{1}{2}\\
-\frac{1}{2}\\
+\frac{1}{2}\\\\
+\frac{1}{2}\\\\
 \end{bmatrix} + (1-0.85) * \begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
 \end{bmatrix}
 $$
 
 $$
 G_b =
 \begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{37}{80}\\
-\frac{37}{80}\\
+\frac{3}{80}\\\\
+\frac{3}{80}\\\\
+\frac{37}{80}\\\\
+\frac{37}{80}\\\\
 \end{bmatrix}
 $$
 
@@ -542,25 +542,25 @@ $$
 
 $$
 G_c = 0.85 * \begin{bmatrix}
-0\\
-0\\
-0\\
-1\\
+0\\\\
+0\\\\
+0\\\\
+1\\\\
 \end{bmatrix} + (1-0.85) * \begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
 \end{bmatrix}
 $$
 
 $$
 G_c =
 \begin{bmatrix}
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
-\frac{71}{80}\\
+\frac{3}{80}\\\\
+\frac{3}{80}\\\\
+\frac{3}{80}\\\\
+\frac{71}{80}\\\\
 \end{bmatrix}
 $$
 
@@ -568,24 +568,24 @@ $$
 
 $$
 G_d = 0.85 *  \begin{bmatrix}
-0\\
-1\\
-0\\
-0\\
+0\\\\
+1\\\\
+0\\\\
+0\\\\
 \end{bmatrix} + (1-0.85) * \begin{bmatrix}
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
-\frac{1}{4}\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
+\frac{1}{4}\\\\
 \end{bmatrix}
 $$
 
 $$
 G_d = \begin{bmatrix}
-\frac{3}{80}\\
-\frac{71}{80}\\
-\frac{3}{80}\\
-\frac{3}{80}\\
+\frac{3}{80}\\\\
+\frac{71}{80}\\\\
+\frac{3}{80}\\\\
+\frac{3}{80}\\\\
 \end{bmatrix}
 $$
 
@@ -593,10 +593,10 @@ $$
 
 $$
 G =  \begin{bmatrix}
-\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\
-\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\
-\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\
-\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\
+\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\\\
+\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\\\
+\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\\\
+\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\\\
 \end{bmatrix}
 $$
 **第三步：根据公式 $ q^{next}=Gq^{cur} $** 求出 $q$ 的收敛值。
@@ -607,10 +607,10 @@ $$
 
 $$
 q = \begin{bmatrix}
-1\\
-1\\
-1\\
-1\\
+1\\\\
+1\\\\
+1\\\\
+1\\\\
 \end{bmatrix}
 $$
 
@@ -619,10 +619,10 @@ $$
 
 $$
 q = \begin{bmatrix}
-  1\\
-  1\\
-  1\\
-  1\\
+  1\\\\
+  1\\\\
+  1\\\\
+  1\\\\
   \end{bmatrix}
   *
   G
@@ -642,10 +642,10 @@ $$
 $$
 q^{cur} =
 \begin{bmatrix}
-1\\
-1\\
-1\\
-1\\
+1\\\\
+1\\\\
+1\\\\
+1\\\\
 \end{bmatrix}
 $$
 时，
@@ -654,15 +654,15 @@ $$
 $$
 q^{next} =  
 \begin{bmatrix}
-\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\
-\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\
-\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\
-\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\
+\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\\\
+\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\\\
+\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\\\
+\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\\\
 \end{bmatrix} * \begin{bmatrix}
-1\\
-1\\
-1\\
-1\\
+1\\\\
+1\\\\
+1\\\\
+1\\\\
 \end{bmatrix}
 $$
 
@@ -674,10 +674,10 @@ $$
 $$
 q^{cur} =
 \begin{bmatrix}
-\frac{3}{20}\\
-\frac{77}{60}\\
-\frac{103}{120}\\
-\frac{41}{24}\\
+\frac{3}{20}\\\\
+\frac{77}{60}\\\\
+\frac{103}{120}\\\\
+\frac{41}{24}\\\\
 \end{bmatrix}
 $$
 
@@ -686,16 +686,16 @@ $$
 $$
 q^{next} =  
 \begin{bmatrix}
-\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\
-\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\
-\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\
-\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\
+\frac{3}{80} \frac{3}{80} \frac{3}{80} \frac{3}{80}\\\\
+\frac{77}{240} \frac{3}{80} \frac{3}{80} \frac{71}{80}\\\\
+\frac{77}{240} \frac{37}{80} \frac{3}{80} \frac{3}{80} \\\\
+\frac{77}{240} \frac{37}{80} \frac{71}{80} \frac{3}{80}\\\\
 \end{bmatrix} *
 \begin{bmatrix}
-\frac{3}{20}\\
-\frac{77}{60}\\
-\frac{103}{120}\\
-\frac{41}{24}\\
+\frac{3}{20}\\\\
+\frac{77}{60}\\\\
+\frac{103}{120}\\\\
+\frac{41}{24}\\\\
 \end{bmatrix}
 $$
 
@@ -703,10 +703,10 @@ $$
 $$
 q^{next} =
 \begin{bmatrix}
-\frac{3}{80} * \frac{3}{20} + \frac{3}{80} * \frac{77}{60} + \frac{3}{80} * \frac{103}{120} + \frac{3}{80} * \frac{41}{24} \\
-\frac{77}{240} * \frac{3}{20} + \frac{3}{80} * \frac{77}{60} + \frac{3}{80} * \frac{103}{120} + \frac{71}{80} * \frac{41}{24} \\
-\frac{77}{240} * \frac{3}{20} + \frac{37}{80} * \frac{77}{60} + \frac{3}{80} * \frac{103}{120} + \frac{3}{80} * \frac{41}{24} \\
-\frac{77}{240} * \frac{3}{20} + \frac{37}{80} * \frac{77}{60} + \frac{71}{80} * \frac{103}{120} + \frac{3}{80} * \frac{41}{24} \\
+\frac{3}{80} * \frac{3}{20} + \frac{3}{80} * \frac{77}{60} + \frac{3}{80} * \frac{103}{120} + \frac{3}{80} * \frac{41}{24} \\\\
+\frac{77}{240} * \frac{3}{20} + \frac{3}{80} * \frac{77}{60} + \frac{3}{80} * \frac{103}{120} + \frac{71}{80} * \frac{41}{24} \\\\
+\frac{77}{240} * \frac{3}{20} + \frac{37}{80} * \frac{77}{60} + \frac{3}{80} * \frac{103}{120} + \frac{3}{80} * \frac{41}{24} \\\\
+\frac{77}{240} * \frac{3}{20} + \frac{37}{80} * \frac{77}{60} + \frac{71}{80} * \frac{103}{120} + \frac{3}{80} * \frac{41}{24} \\\\
 \end{bmatrix}
 $$
 

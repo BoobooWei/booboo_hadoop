@@ -112,6 +112,10 @@ tcp    LISTEN     0      128        172.19.34.227:16020                 *:*     
 tcp    LISTEN     0      128                    *:16030                 *:*      users:(("java",28572,233))
 ```
 
+访问 `http://localhost:16010`
+
+![](pic/11.jpg)
+
 ### 7. 登录hbase shell
 
 ```shell
